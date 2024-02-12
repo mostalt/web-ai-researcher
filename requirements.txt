@@ -3,3 +3,5 @@ langchain
 langchainhub
 langgraph
 langchain_openai
+playwright
+ipython
