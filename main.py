@@ -25,6 +25,8 @@ async def main():
 
       res = await call_agent("Could you explain the WebVoyager paper (on arxiv)?", page, graph)
       print(f"Final response: {res}")
+    except Exception as e:
+      print(f"Error: {e}")
     finally:
       await browser.close()
       exit_program()

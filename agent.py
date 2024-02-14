@@ -110,15 +110,17 @@ async def call_agent(question: str, page, graph, max_steps: int = 150):
   )
   final_answer = None
   steps = []
+
   async for event in event_stream:
     # We'll display an event stream here
     if "agent" not in event:
-        continue
+      continue
     pred = event["agent"].get("prediction") or {}
     action = pred.get("action")
     action_input = pred.get("args")
-    steps.append(f"{len(steps) + 1}. {action}: {action_input}")
-    print("\n".join(steps))
+    action_log = f"{len(steps) + 1}. {action}: {action_input}"
+    steps.append(action_log)
+    print(action_log + "\n")
 
     if "ANSWER" in action:
       final_answer = action_input[0]
